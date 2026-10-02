@@ -1,56 +1,1242 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LuanTech Perú - Tecnología y accesorios. Audífonos, parlantes, cargadores y más." />
+  <meta name="theme-color" content="#05080d" />
   <title>LuanTech Perú | Tecnología que te conecta</title>
+
+  <style>
+    :root{
+      --bg:#05080d;
+      --bg-2:#08111b;
+      --panel:#0b131d;
+      --panel-2:#0f1b28;
+      --line:#1b3348;
+      --blue:#0798ff;
+      --blue-2:#00d4ff;
+      --gold:#f1c45b;
+      --gold-2:#ffd977;
+      --text:#f5f8fb;
+      --muted:#9ca9b6;
+      --success:#25D366;
+      --danger:#ff5d67;
+      --shadow:0 18px 55px rgba(0,0,0,.38);
+      --radius:20px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at 75% 10%, rgba(0,153,255,.12), transparent 30%),
+        radial-gradient(circle at 20% 25%, rgba(241,196,91,.08), transparent 25%),
+        var(--bg);
+      color:var(--text);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height:1.5;
+    }
+
+    button, input{font:inherit}
+    a{color:inherit}
+    img{max-width:100%;display:block}
+    .container{width:min(1180px, calc(100% - 32px));margin:auto}
+    .muted{color:var(--muted)}
+
+    /* HEADER */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(5,8,13,.88);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .header{
+      min-height:78px;
+      display:grid;
+      grid-template-columns:auto minmax(260px, 1fr) auto;
+      gap:22px;
+      align-items:center;
+    }
+    .brand{
+      width:215px;
+      padding:8px 0;
+    }
+    .brand img{
+      width:100%;
+      height:54px;
+      object-fit:contain;
+      object-position:left center;
+    }
+    .search{
+      position:relative;
+    }
+    .search input{
+      width:100%;
+      border:1px solid #243646;
+      background:#111922;
+      color:#fff;
+      border-radius:999px;
+      padding:13px 48px 13px 18px;
+      outline:none;
+      transition:.2s;
+    }
+    .search input:focus{
+      border-color:var(--blue);
+      box-shadow:0 0 0 4px rgba(7,152,255,.12);
+    }
+    .search-icon{
+      position:absolute;
+      right:8px;
+      top:50%;
+      transform:translateY(-50%);
+      width:36px;height:36px;
+      border-radius:50%;
+      border:0;
+      background:linear-gradient(135deg,var(--gold-2),var(--gold));
+      color:#111;
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      font-weight:900;
+    }
+    .header-actions{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .icon-btn{
+      border:1px solid #263746;
+      color:#fff;
+      background:#0d141c;
+      border-radius:12px;
+      padding:10px 13px;
+      cursor:pointer;
+      transition:.2s;
+      white-space:nowrap;
+    }
+    .icon-btn:hover{border-color:var(--gold);transform:translateY(-1px)}
+    .cart-count{
+      display:inline-grid;
+      place-items:center;
+      width:22px;height:22px;
+      margin-left:7px;
+      border-radius:50%;
+      background:var(--gold);
+      color:#151515;
+      font-size:12px;
+      font-weight:900;
+    }
+
+    .nav{
+      border-top:1px solid rgba(255,255,255,.05);
+      background:#070b10;
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      gap:28px;
+      min-height:48px;
+      overflow-x:auto;
+      scrollbar-width:none;
+    }
+    .nav-inner::-webkit-scrollbar{display:none}
+    .nav a{
+      text-decoration:none;
+      font-size:14px;
+      color:#dce6ef;
+      white-space:nowrap;
+    }
+    .nav a:hover,.nav a.active{color:var(--gold)}
+    .shipping{
+      margin-left:auto;
+      color:var(--gold);
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    /* HERO */
+    .hero{
+      position:relative;
+      overflow:hidden;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .hero::before{
+      content:"";
+      position:absolute;inset:0;
+      background:
+        linear-gradient(120deg, rgba(241,196,91,.12), transparent 28%),
+        linear-gradient(300deg, rgba(7,152,255,.17), transparent 35%);
+      pointer-events:none;
+    }
+    .hero-grid{
+      min-height:520px;
+      display:grid;
+      grid-template-columns:1.02fr .98fr;
+      align-items:center;
+      gap:36px;
+      padding:64px 0;
+      position:relative;
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 13px;
+      border:1px solid rgba(241,196,91,.45);
+      color:var(--gold-2);
+      background:rgba(241,196,91,.07);
+      border-radius:999px;
+      font-size:13px;
+      letter-spacing:.06em;
+      font-weight:800;
+    }
+    .hero h1{
+      font-size:clamp(44px,6vw,78px);
+      line-height:.98;
+      margin:24px 0 18px;
+      letter-spacing:-.035em;
+    }
+    .hero h1 span{
+      color:var(--gold-2);
+      text-shadow:0 0 30px rgba(241,196,91,.16);
+    }
+    .hero p{
+      color:#c8d2db;
+      font-size:18px;
+      max-width:580px;
+    }
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .btn{
+      border:0;
+      border-radius:12px;
+      padding:13px 20px;
+      font-weight:850;
+      cursor:pointer;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      transition:.2s;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn-gold{
+      background:linear-gradient(135deg,var(--gold-2),var(--gold));
+      color:#121212;
+      box-shadow:0 9px 24px rgba(241,196,91,.15);
+    }
+    .btn-wa{
+      background:var(--success);
+      color:#fff;
+      box-shadow:0 9px 24px rgba(37,211,102,.15);
+    }
+    .hero-points{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      margin-top:30px;
+      color:#cbd4dc;
+      font-size:13px;
+    }
+    .hero-point{display:flex;align-items:center;gap:8px}
+    .hero-point b{color:var(--gold)}
+
+    .hero-showcase{
+      position:relative;
+      min-height:410px;
+    }
+    .glow{
+      position:absolute;
+      width:300px;height:300px;
+      border-radius:50%;
+      background:rgba(0,132,255,.16);
+      filter:blur(45px);
+      right:80px;top:55px;
+    }
+    .product-float{
+      position:absolute;
+      background:linear-gradient(160deg,#111c28,#07101a);
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:var(--shadow);
+      border-radius:22px;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+    }
+    .product-float img{width:100%;height:100%;object-fit:contain;padding:14px}
+    .float-main{
+      width:58%;height:58%;
+      left:18%;top:10%;
+      transform:rotate(-4deg);
+      z-index:3;
+    }
+    .float-p9{
+      width:42%;height:44%;
+      right:0;bottom:1%;
+      transform:rotate(5deg);
+      z-index:2;
+    }
+    .float-lbx{
+      width:41%;height:38%;
+      left:0;bottom:5%;
+      transform:rotate(-5deg);
+      z-index:4;
+    }
+    .orbit{
+      position:absolute;
+      left:6%;right:0;top:34%;
+      height:115px;
+      border:2px solid rgba(0,174,255,.45);
+      border-radius:50%;
+      transform:rotate(-8deg);
+      box-shadow:0 0 28px rgba(0,174,255,.20), inset 0 0 20px rgba(241,196,91,.08);
+    }
+
+    /* SECTIONS */
+    section{padding:64px 0}
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:18px;
+      margin-bottom:28px;
+    }
+    .section-title{
+      margin:0;
+      font-size:clamp(28px,4vw,40px);
+      letter-spacing:-.02em;
+    }
+    .section-title span{color:var(--gold)}
+    .section-link{
+      color:var(--gold);
+      text-decoration:none;
+      font-weight:700;
+      font-size:14px;
+    }
+
+    /* CATEGORIES */
+    .categories{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:14px;
+    }
+    .category{
+      padding:20px;
+      min-height:135px;
+      border-radius:16px;
+      border:1px solid #203243;
+      background:linear-gradient(160deg,#0d1721,#081019);
+      cursor:pointer;
+      transition:.2s;
+    }
+    .category:hover{
+      border-color:var(--blue);
+      transform:translateY(-3px);
+      box-shadow:0 13px 30px rgba(0,0,0,.22);
+    }
+    .category-icon{font-size:30px;margin-bottom:20px}
+    .category strong{display:block;font-size:16px}
+    .category small{display:block;color:var(--muted);margin-top:5px}
+
+    /* PRODUCTS */
+    .filters{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-bottom:22px;
+    }
+    .filter{
+      border:1px solid #273a4b;
+      background:#0a121a;
+      color:#dfe8ef;
+      padding:8px 13px;
+      border-radius:999px;
+      cursor:pointer;
+    }
+    .filter.active{
+      color:#101010;
+      background:var(--gold);
+      border-color:var(--gold);
+      font-weight:800;
+    }
+    .products{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .product-card{
+      border:1px solid #203143;
+      background:linear-gradient(165deg,#0d161f,#070d13);
+      border-radius:18px;
+      overflow:hidden;
+      transition:.25s;
+      position:relative;
+    }
+    .product-card:hover{
+      transform:translateY(-4px);
+      border-color:#2a79a9;
+      box-shadow:var(--shadow);
+    }
+    .product-media{
+      height:260px;
+      padding:16px;
+      background:
+        radial-gradient(circle at 50% 100%, rgba(0,153,255,.15), transparent 45%),
+        #0a1118;
+      display:grid;
+      place-items:center;
+    }
+    .product-media img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      filter:drop-shadow(0 20px 25px rgba(0,0,0,.38));
+    }
+    .product-body{padding:18px}
+    .badge{
+      display:inline-block;
+      color:#151515;
+      background:var(--gold);
+      font-size:11px;
+      font-weight:900;
+      padding:5px 8px;
+      border-radius:999px;
+      margin-bottom:10px;
+    }
+    .product-name{font-size:20px;margin:0 0 4px}
+    .product-desc{color:var(--muted);font-size:13px;min-height:40px}
+    .product-price{
+      margin:15px 0 12px;
+      font-size:22px;
+      font-weight:900;
+      color:#fff;
+    }
+    .price-pending{
+      color:var(--gold-2);
+      font-size:17px;
+    }
+    .product-actions{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:8px;
+    }
+    .add-cart{
+      border:0;
+      background:linear-gradient(135deg,var(--gold-2),var(--gold));
+      color:#111;
+      font-weight:850;
+      border-radius:11px;
+      padding:12px;
+      cursor:pointer;
+    }
+    .quick-wa{
+      width:45px;
+      border:1px solid rgba(37,211,102,.5);
+      background:rgba(37,211,102,.12);
+      color:#47e681;
+      border-radius:11px;
+      cursor:pointer;
+      font-size:18px;
+    }
+    .empty{
+      grid-column:1/-1;
+      padding:40px;
+      text-align:center;
+      border:1px dashed #314354;
+      border-radius:18px;
+      color:var(--muted);
+    }
+
+    /* PROMO / BENEFITS */
+    .promo-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+    .promo{
+      min-height:220px;
+      border:1px solid #23384c;
+      border-radius:18px;
+      padding:28px;
+      background:
+        radial-gradient(circle at 90% 40%, rgba(0,153,255,.17), transparent 38%),
+        linear-gradient(140deg,#101821,#070b10);
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+    }
+    .promo h3{font-size:30px;line-height:1.05;margin:0 0 10px}
+    .promo h3 span{color:var(--gold)}
+    .promo p{color:#bdc8d1;max-width:420px}
+
+    .benefits{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+      margin-top:18px;
+    }
+    .benefit{
+      border:1px solid #1f3141;
+      border-radius:14px;
+      padding:18px;
+      background:#0a1118;
+    }
+    .benefit strong{display:block;margin-top:10px}
+    .benefit small{color:var(--muted)}
+
+    /* FOOTER */
+    footer{
+      border-top:1px solid #182634;
+      background:#03060a;
+      padding:44px 0 26px;
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.3fr .8fr 1fr 1fr;
+      gap:34px;
+    }
+    .footer-brand img{
+      width:210px;
+      height:58px;
+      object-fit:contain;
+      object-position:left center;
+    }
+    .footer-title{font-weight:900;margin-bottom:12px}
+    .footer-list{
+      list-style:none;
+      padding:0;margin:0;
+      display:grid;
+      gap:8px;
+      color:#abb7c2;
+      font-size:14px;
+    }
+    .footer-list a{text-decoration:none}
+    .footer-list a:hover{color:var(--gold)}
+    .socials{display:flex;gap:8px;margin-top:15px;flex-wrap:wrap}
+    .social{
+      text-decoration:none;
+      border:1px solid #253544;
+      padding:8px 10px;
+      border-radius:10px;
+      color:#dbe4eb;
+      font-size:13px;
+    }
+    .copyright{
+      margin-top:35px;
+      padding-top:20px;
+      border-top:1px solid #16222d;
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      color:#758392;
+      font-size:12px;
+      flex-wrap:wrap;
+    }
+
+    /* FLOATING WHATSAPP */
+    .wa-float{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      z-index:55;
+      width:58px;height:58px;
+      border-radius:50%;
+      background:var(--success);
+      display:grid;
+      place-items:center;
+      text-decoration:none;
+      color:#fff;
+      font-size:27px;
+      box-shadow:0 12px 35px rgba(37,211,102,.28);
+      border:3px solid rgba(255,255,255,.18);
+    }
+
+    /* CART */
+    .overlay{
+      position:fixed;
+      inset:0;
+      z-index:80;
+      background:rgba(0,0,0,.65);
+      opacity:0;
+      pointer-events:none;
+      transition:.2s;
+    }
+    .overlay.show{opacity:1;pointer-events:auto}
+    .cart-drawer{
+      position:absolute;
+      right:0;top:0;bottom:0;
+      width:min(430px,100%);
+      background:#071019;
+      border-left:1px solid #23384b;
+      display:flex;
+      flex-direction:column;
+      transform:translateX(100%);
+      transition:.25s;
+    }
+    .overlay.show .cart-drawer{transform:translateX(0)}
+    .cart-head{
+      padding:20px;
+      border-bottom:1px solid #1f3141;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .cart-close{
+      border:1px solid #334454;
+      background:transparent;
+      color:#fff;
+      border-radius:10px;
+      width:38px;height:38px;
+      cursor:pointer;
+    }
+    .cart-items{padding:15px;overflow:auto;flex:1}
+    .cart-item{
+      display:grid;
+      grid-template-columns:74px 1fr auto;
+      gap:12px;
+      padding:12px 0;
+      border-bottom:1px solid #172635;
+      align-items:center;
+    }
+    .cart-item img{
+      width:74px;height:74px;
+      object-fit:contain;
+      background:#0c151e;
+      border-radius:12px;
+    }
+    .cart-item h4{margin:0 0 4px;font-size:14px}
+    .qty{
+      display:flex;
+      gap:7px;
+      align-items:center;
+      margin-top:8px;
+    }
+    .qty button{
+      width:28px;height:28px;
+      border:1px solid #34485a;
+      background:#0e1923;color:white;
+      border-radius:7px;
+      cursor:pointer;
+    }
+    .remove{
+      border:0;
+      color:#ff7a81;
+      background:transparent;
+      cursor:pointer;
+      font-size:17px;
+    }
+    .cart-footer{
+      border-top:1px solid #203243;
+      padding:18px;
+      background:#050b11;
+    }
+    .total-row{
+      display:flex;
+      justify-content:space-between;
+      font-weight:900;
+      font-size:18px;
+      margin-bottom:12px;
+    }
+    .checkout{
+      width:100%;
+      border:0;
+      padding:14px;
+      border-radius:12px;
+      background:var(--success);
+      color:#fff;
+      font-weight:900;
+      cursor:pointer;
+    }
+    .payment-note{
+      text-align:center;
+      margin-top:11px;
+      color:#8392a1;
+      font-size:12px;
+    }
+
+    /* TOAST */
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:25px;
+      transform:translate(-50%,20px);
+      z-index:120;
+      background:#111b25;
+      border:1px solid #31506a;
+      box-shadow:var(--shadow);
+      padding:11px 16px;
+      border-radius:12px;
+      color:#fff;
+      opacity:0;
+      pointer-events:none;
+      transition:.2s;
+    }
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+
+    /* MOBILE */
+    @media (max-width:900px){
+      .header{grid-template-columns:1fr auto}
+      .brand{width:180px}
+      .search{grid-column:1/-1;grid-row:2}
+      .header{padding:10px 0 14px}
+      .hero-grid{grid-template-columns:1fr;padding:45px 0 36px}
+      .hero-showcase{min-height:380px}
+      .categories{grid-template-columns:repeat(2,1fr)}
+      .products{grid-template-columns:repeat(2,1fr)}
+      .benefits{grid-template-columns:repeat(2,1fr)}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:620px){
+      .container{width:min(100% - 22px,1180px)}
+      .header-actions .account{display:none}
+      .nav-inner{gap:20px}
+      .shipping{display:none}
+      .hero-grid{min-height:auto}
+      .hero p{font-size:16px}
+      .hero-showcase{min-height:310px}
+      .float-main{width:62%;height:57%;left:18%}
+      .float-p9{width:44%;height:42%}
+      .float-lbx{width:44%;height:36%}
+      .categories{grid-template-columns:1fr 1fr}
+      section{padding:48px 0}
+      .products{grid-template-columns:1fr}
+      .product-media{height:280px}
+      .promo-grid{grid-template-columns:1fr}
+      .benefits{grid-template-columns:1fr 1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .section-head{align-items:start}
+    }
+  </style>
 </head>
 
-<body style="
-  margin:0;
-  background:#05070b;
-  color:white;
-  font-family:Arial, sans-serif;
-  text-align:center;
-  padding:60px 20px;
-">
+<body>
 
-  <h1 style="color:#1597ff;font-size:50px;">
-    LUANTECH
-  </h1>
+  <!-- =========================================================
+       LUANTECH - CONFIGURACIÓN RÁPIDA
+       WhatsApp actual: +51 946 392 083
+       Correo actual: techimportal@gmail.com
 
-  <h2 style="color:#f4c95d;">
-    Tecnología que te conecta
-  </h2>
+       Para agregar más productos:
+       baja hasta el bloque JavaScript "PRODUCTOS" y copia un objeto.
+       ========================================================= -->
 
-  <p>
-    Tienda online de tecnología y accesorios en Perú.
-  </p>
+  <header class="topbar">
+    <div class="container header">
+      <a class="brand" href="#inicio" aria-label="LuanTech Perú">
+        <!-- CAMBIA assets/logo.png si luego deseas usar otro logo -->
+        <img src="assets/logo.png" alt="Logo LuanTech" />
+      </a>
 
-  <p>
-    Audífonos • Parlantes • Cargadores • Accesorios
-  </p>
+      <div class="search">
+        <input id="searchInput" type="search" placeholder="Buscar productos, marcas y categorías..." aria-label="Buscar productos" />
+        <button class="search-icon" id="searchButton" aria-label="Buscar">⌕</button>
+      </div>
 
-  <a
-    href="https://wa.me/51946392083"
-    target="_blank"
-    style="
-      display:inline-block;
-      margin-top:25px;
-      background:#25D366;
-      color:white;
-      padding:15px 25px;
-      border-radius:10px;
-      text-decoration:none;
-      font-weight:bold;
-    "
-  >
-    Comprar por WhatsApp
-  </a>
+      <div class="header-actions">
+        <a class="icon-btn account" href="mailto:techimportal@gmail.com">✉ Contacto</a>
+        <button class="icon-btn" id="openCart">🛒 Carrito <span class="cart-count" id="cartCount">0</span></button>
+      </div>
+    </div>
 
-  <p style="margin-top:40px;color:#aaa;">
-    techimportal@gmail.com
-  </p>
+    <nav class="nav">
+      <div class="container nav-inner">
+        <a class="active" href="#inicio">Inicio</a>
+        <a href="#productos">Productos</a>
+        <a href="#categorias">Categorías</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+        <span class="shipping">⚡ Atención y pedidos por WhatsApp</span>
+      </div>
+    </nav>
+  </header>
 
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">⚡ TU TIENDA ONLINE DE TECNOLOGÍA</span>
+          <h1>TECNOLOGÍA<br><span>QUE TE CONECTA</span></h1>
+          <p>Accesorios y dispositivos para hacer tu día más práctico, conectado y entretenido. Compra de forma rápida y coordina tu pedido directamente con LuanTech.</p>
+
+          <div class="hero-actions">
+            <a class="btn btn-gold" href="#productos">Ver productos →</a>
+            <a class="btn btn-wa" href="https://wa.me/51946392083?text=Hola%20LuanTech,%20quisiera%20información%20sobre%20sus%20productos." target="_blank" rel="noopener">💬 Comprar por WhatsApp</a>
+          </div>
+
+          <div class="hero-points">
+            <span class="hero-point"><b>✓</b> Compra coordinada</span>
+            <span class="hero-point"><b>✓</b> Yape / Plin / transferencia</span>
+            <span class="hero-point"><b>✓</b> Atención personalizada</span>
+          </div>
+        </div>
+
+        <div class="hero-showcase" aria-label="Productos LuanTech">
+          <div class="glow"></div>
+          <div class="orbit"></div>
+          <div class="product-float float-main"><img src="assets/m90.jpg" alt="Audífonos M90 Pro"></div>
+          <div class="product-float float-p9"><img src="assets/p9.webp" alt="Audífonos P9"></div>
+          <div class="product-float float-lbx"><img src="assets/lbx.webp" alt="Parlante LBX"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="categorias">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Nuestras <span>Categorías</span></h2>
+          <a class="section-link" href="#productos">Ver productos →</a>
+        </div>
+
+        <div class="categories">
+          <div class="category" data-category="Audífonos">
+            <div class="category-icon">🎧</div>
+            <strong>Audífonos</strong>
+            <small>Sonido para tu día</small>
+          </div>
+          <div class="category" data-category="Parlantes">
+            <div class="category-icon">🔊</div>
+            <strong>Parlantes</strong>
+            <small>Música donde quieras</small>
+          </div>
+          <div class="category" data-category="Cargadores">
+            <div class="category-icon">⚡</div>
+            <strong>Cargadores</strong>
+            <small>Energía para tus equipos</small>
+          </div>
+          <div class="category" data-category="Cables">
+            <div class="category-icon">🔌</div>
+            <strong>Cables</strong>
+            <small>Conexión práctica</small>
+          </div>
+          <div class="category" data-category="Accesorios">
+            <div class="category-icon">⌨️</div>
+            <strong>Accesorios</strong>
+            <small>Todo para completar tu setup</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="productos">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">Productos <span>Destacados</span></h2>
+            <div class="muted">Primer catálogo de LuanTech. Puedes agregar todos los productos que necesites.</div>
+          </div>
+        </div>
+
+        <div class="filters" id="filters">
+          <button class="filter active" data-filter="Todos">Todos</button>
+          <button class="filter" data-filter="Audífonos">Audífonos</button>
+          <button class="filter" data-filter="Parlantes">Parlantes</button>
+          <button class="filter" data-filter="Cargadores">Cargadores</button>
+          <button class="filter" data-filter="Accesorios">Accesorios</button>
+        </div>
+
+        <div class="products" id="productGrid"></div>
+      </div>
+    </section>
+
+    <section id="nosotros">
+      <div class="container">
+        <div class="promo-grid">
+          <div class="promo">
+            <div>
+              <h3>Tu tecnología,<br><span>en un solo lugar</span></h3>
+              <p>LuanTech nace para acercarte accesorios y dispositivos útiles con atención directa y sencilla.</p>
+              <a class="btn btn-gold" href="#productos">Explorar catálogo →</a>
+            </div>
+          </div>
+
+          <div class="promo">
+            <div>
+              <h3>Compra fácil,<br><span>sin tarjeta</span></h3>
+              <p>Coordina tu pedido por WhatsApp y consulta las opciones disponibles de Yape, Plin o transferencia.</p>
+              <a class="btn btn-wa" href="https://wa.me/51946392083?text=Hola%20LuanTech,%20quisiera%20realizar%20un%20pedido." target="_blank" rel="noopener">Hablar por WhatsApp →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="benefits">
+          <div class="benefit">
+            <div>🛍️</div>
+            <strong>Compra sencilla</strong>
+            <small>Elige tus productos y envía el pedido por WhatsApp.</small>
+          </div>
+          <div class="benefit">
+            <div>💬</div>
+            <strong>Atención directa</strong>
+            <small>Resuelve dudas antes de confirmar tu compra.</small>
+          </div>
+          <div class="benefit">
+            <div>💳</div>
+            <strong>Pago coordinado</strong>
+            <small>Yape, Plin o transferencia según disponibilidad.</small>
+          </div>
+          <div class="benefit">
+            <div>📦</div>
+            <strong>Entrega coordinada</strong>
+            <small>Consulta opciones de entrega para tu ubicación.</small>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contacto">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="LuanTech">
+          <p class="muted">Tecnología y accesorios para mantenerte conectado.</p>
+          <div class="socials">
+            <!-- REEMPLAZA # por tu URL real cuando tengas Facebook e Instagram -->
+            <a class="social" href="#" onclick="return socialPending('Facebook')">Facebook</a>
+            <a class="social" href="#" onclick="return socialPending('Instagram')">Instagram</a>
+            <a class="social" href="https://wa.me/51946392083" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-title">Enlaces</div>
+          <ul class="footer-list">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#categorias">Categorías</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-title">Contacto</div>
+          <ul class="footer-list">
+            <li><a href="tel:+51946392083">📱 +51 946 392 083</a></li>
+            <li><a href="mailto:techimportal@gmail.com">✉ techimportal@gmail.com</a></li>
+            <li>📍 Perú</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-title">Métodos coordinados</div>
+          <ul class="footer-list">
+            <li>Yape</li>
+            <li>Plin</li>
+            <li>Transferencia</li>
+            <li>No procesamos tarjetas desde esta web.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <span>© <span id="year"></span> LuanTech Perú. Todos los derechos reservados.</span>
+        <span>Tecnología · Calidad · Atención</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/51946392083?text=Hola%20LuanTech,%20quisiera%20información." target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+  <!-- CARRITO -->
+  <div class="overlay" id="cartOverlay">
+    <aside class="cart-drawer" role="dialog" aria-modal="true" aria-label="Carrito de compras">
+      <div class="cart-head">
+        <div>
+          <strong>Tu carrito</strong>
+          <div class="muted" style="font-size:12px">Pedido para coordinar por WhatsApp</div>
+        </div>
+        <button class="cart-close" id="closeCart" aria-label="Cerrar">✕</button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-footer">
+        <div class="total-row">
+          <span>Total</span>
+          <span id="cartTotal">Por confirmar</span>
+        </div>
+        <button class="checkout" id="checkoutButton">💬 Enviar pedido por WhatsApp</button>
+        <div class="payment-note">El precio y la disponibilidad deben confirmarse antes del pago.</div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    /* =========================================================
+       PRODUCTOS
+       IMPORTANTE:
+       Los precios se dejan en null porque todavía no nos has
+       confirmado los precios reales. Así evitamos publicar
+       información incorrecta.
+
+       Cuando tengas un precio:
+       price: null
+       cámbialo por:
+       price: 59.90
+
+       Para agregar otro producto, copia uno de estos bloques.
+       ========================================================= */
+
+    const PRODUCTS = [
+      {
+        id: "m90",
+        name: "Audífonos M90 Pro",
+        category: "Audífonos",
+        description: "Audífonos inalámbricos con estuche de carga.",
+        image: "assets/m90.jpg",
+        price: null,
+        badge: "Destacado"
+      },
+      {
+        id: "p9",
+        name: "Audífonos P9",
+        category: "Audífonos",
+        description: "Audífonos de diadema inalámbricos para uso diario.",
+        image: "assets/p9.webp",
+        price: null,
+        badge: "Nuevo"
+      },
+      {
+        id: "lbx",
+        name: "Parlante LBX",
+        category: "Parlantes",
+        description: "Parlante Bluetooth portátil de diseño compacto.",
+        image: "assets/lbx.webp",
+        price: null,
+        badge: "Popular"
+      }
+    ];
+
+    const WHATSAPP = "51946392083";
+    let currentFilter = "Todos";
+    let cart = JSON.parse(localStorage.getItem("luantech_cart") || "[]");
+
+    const productGrid = document.getElementById("productGrid");
+    const searchInput = document.getElementById("searchInput");
+    const cartOverlay = document.getElementById("cartOverlay");
+    const cartItems = document.getElementById("cartItems");
+    const cartCount = document.getElementById("cartCount");
+    const cartTotal = document.getElementById("cartTotal");
+    const toast = document.getElementById("toast");
+
+    function money(value){
+      return new Intl.NumberFormat("es-PE", {
+        style:"currency",
+        currency:"PEN"
+      }).format(value);
+    }
+
+    function renderProducts(){
+      const term = searchInput.value.trim().toLowerCase();
+
+      const filtered = PRODUCTS.filter(p => {
+        const byCategory = currentFilter === "Todos" || p.category === currentFilter;
+        const searchable = `${p.name} ${p.category} ${p.description}`.toLowerCase();
+        return byCategory && searchable.includes(term);
+      });
+
+      if(!filtered.length){
+        productGrid.innerHTML = `<div class="empty">No encontramos productos con esa búsqueda.</div>`;
+        return;
+      }
+
+      productGrid.innerHTML = filtered.map(p => `
+        <article class="product-card">
+          <div class="product-media">
+            <img src="${p.image}" alt="${p.name}" loading="lazy">
+          </div>
+          <div class="product-body">
+            ${p.badge ? `<span class="badge">${p.badge}</span>` : ""}
+            <h3 class="product-name">${p.name}</h3>
+            <div class="product-desc">${p.description}</div>
+            <div class="product-price ${p.price == null ? "price-pending" : ""}">
+              ${p.price == null ? "Precio por confirmar" : money(p.price)}
+            </div>
+            <div class="product-actions">
+              <button class="add-cart" onclick="addToCart('${p.id}')">🛒 Agregar al carrito</button>
+              <button class="quick-wa" onclick="quickWhatsApp('${p.id}')" title="Consultar por WhatsApp">💬</button>
+            </div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function addToCart(id){
+      const found = cart.find(i => i.id === id);
+      if(found){
+        found.qty += 1;
+      } else {
+        cart.push({ id, qty:1 });
+      }
+      saveCart();
+      showToast("Producto agregado al carrito");
+    }
+
+    function removeFromCart(id){
+      cart = cart.filter(i => i.id !== id);
+      saveCart();
+    }
+
+    function changeQty(id, delta){
+      const item = cart.find(i => i.id === id);
+      if(!item) return;
+      item.qty += delta;
+      if(item.qty <= 0) removeFromCart(id);
+      else saveCart();
+    }
+
+    function saveCart(){
+      localStorage.setItem("luantech_cart", JSON.stringify(cart));
+      renderCart();
+    }
+
+    function renderCart(){
+      const totalQty = cart.reduce((sum,i) => sum + i.qty, 0);
+      cartCount.textContent = totalQty;
+
+      if(!cart.length){
+        cartItems.innerHTML = `<div class="empty">Tu carrito está vacío.</div>`;
+        cartTotal.textContent = "S/ 0.00";
+        return;
+      }
+
+      let total = 0;
+      let hasPending = false;
+
+      cartItems.innerHTML = cart.map(item => {
+        const product = PRODUCTS.find(p => p.id === item.id);
+        if(!product) return "";
+
+        if(product.price == null) hasPending = true;
+        else total += product.price * item.qty;
+
+        return `
+          <div class="cart-item">
+            <img src="${product.image}" alt="${product.name}">
+            <div>
+              <h4>${product.name}</h4>
+              <div class="muted" style="font-size:12px">
+                ${product.price == null ? "Precio por confirmar" : money(product.price)}
+              </div>
+              <div class="qty">
+                <button onclick="changeQty('${product.id}',-1)">−</button>
+                <span>${item.qty}</span>
+                <button onclick="changeQty('${product.id}',1)">+</button>
+              </div>
+            </div>
+            <button class="remove" onclick="removeFromCart('${product.id}')" title="Eliminar">✕</button>
+          </div>
+        `;
+      }).join("");
+
+      cartTotal.textContent = hasPending ? "Por confirmar" : money(total);
+    }
+
+    function openCart(){
+      cartOverlay.classList.add("show");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeCart(){
+      cartOverlay.classList.remove("show");
+      document.body.style.overflow = "";
+    }
+
+    function quickWhatsApp(id){
+      const p = PRODUCTS.find(p => p.id === id);
+      const price = p.price == null ? "Precio por confirmar" : money(p.price);
+      const msg =
+        `Hola LuanTech, quisiera consultar por este producto:\n\n` +
+        `• ${p.name}\n` +
+        `• ${price}\n\n` +
+        `¿Está disponible?`;
+      window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank");
+    }
+
+    function checkout(){
+      if(!cart.length){
+        showToast("Agrega al menos un producto al carrito");
+        return;
+      }
+
+      const lines = cart.map(item => {
+        const p = PRODUCTS.find(p => p.id === item.id);
+        const unit = p.price == null ? "precio por confirmar" : money(p.price);
+        return `• ${p.name} x${item.qty} — ${unit}`;
+      });
+
+      const hasPending = cart.some(item => PRODUCTS.find(p => p.id === item.id)?.price == null);
+
+      let total = 0;
+      cart.forEach(item => {
+        const p = PRODUCTS.find(p => p.id === item.id);
+        if(p && p.price != null) total += p.price * item.qty;
+      });
+
+      const totalText = hasPending ? "Total: por confirmar" : `Total: ${money(total)}`;
+
+      const msg =
+        `Hola LuanTech 👋\n\n` +
+        `Quisiera realizar este pedido:\n\n` +
+        lines.join("\n") +
+        `\n\n${totalText}\n\n` +
+        `¿Me confirman disponibilidad y opciones de entrega?`;
+
+      window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank");
+    }
+
+    function showToast(message){
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => toast.classList.remove("show"), 1800);
+    }
+
+    function socialPending(network){
+      alert(`Todavía falta configurar el enlace real de ${network}. Cuando tengas tu URL, reemplaza el # en el footer del index.html.`);
+      return false;
+    }
+
+    // Eventos
+    document.getElementById("openCart").addEventListener("click", openCart);
+    document.getElementById("closeCart").addEventListener("click", closeCart);
+    document.getElementById("checkoutButton").addEventListener("click", checkout);
+
+    cartOverlay.addEventListener("click", (e) => {
+      if(e.target === cartOverlay) closeCart();
+    });
+
+    searchInput.addEventListener("input", renderProducts);
+    document.getElementById("searchButton").addEventListener("click", renderProducts);
+
+    document.querySelectorAll(".filter").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".filter").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentFilter = btn.dataset.filter;
+        renderProducts();
+      });
+    });
+
+    document.querySelectorAll(".category").forEach(card => {
+      card.addEventListener("click", () => {
+        currentFilter = card.dataset.category;
+        document.querySelectorAll(".filter").forEach(b => {
+          b.classList.toggle("active", b.dataset.filter === currentFilter);
+        });
+        document.getElementById("productos").scrollIntoView({behavior:"smooth"});
+        renderProducts();
+      });
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    renderProducts();
+    renderCart();
+  </script>
 </body>
 </html>
