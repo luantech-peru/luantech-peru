@@ -162,32 +162,34 @@
 }
 
 .cart-icon{
-    width:44px;
-    height:44px;
-    border-radius:14px;
-    border:1px solid rgba(242,199,92,.85);
-    background:#0b141d;
-    color:#f2c75c;
+    width:46px;
+    height:46px;
+    border-radius:12px;
+    border:1px solid #d8a928;
+    background:#050a10;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:21px;
     cursor:pointer;
+    position:relative;
     box-shadow:
-        0 0 12px rgba(242,199,92,.12),
-        inset 0 0 10px rgba(255,255,255,.03);
+        0 0 15px rgba(242,199,92,.18),
+        inset 0 0 12px rgba(255,255,255,.04);
     transition:.3s ease;
 }
-    
+
 .cart-icon svg{
-    width:22px;
-    height:22px;
-    fill:#f2c75c;
+    width:26px;
+    height:26px;
+    fill:none;
+    stroke:#f2c75c;
+    stroke-width:1.8;
 }
+
 .cart-icon:hover{
     transform:translateY(-2px);
     box-shadow:
-        0 0 18px rgba(242,199,92,.35);
+        0 0 25px rgba(242,199,92,.45);
 }
     
     .header-btn{
@@ -984,8 +986,16 @@
     <button class="cart-icon cart-button" id="openCart">
 
     <svg viewBox="0 0 24 24">
-        <path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM7.2 14h9.6c.8 0 1.5-.5 1.8-1.2L21 6H6.2L5.4 4H2v2h2l3.6 7.6-1.3 2.4C6.1 16.3 6 16.7 6 17c0 1.1.9 2 2 2h12v-2H8.4c-.1 0-.2-.1-.2-.2l.9-1.8z"/>
-    </svg>
+<path d="M3 4h2l2.4 10.2c.2.8.9 1.3 1.7 1.3h8.7c.8 0 1.5-.5 1.8-1.2L22 7H7"
+fill="none"
+stroke="#f2c75c"
+stroke-width="1.8"
+stroke-linecap="round"
+stroke-linejoin="round"/>
+
+<circle cx="10" cy="19" r="1.5" fill="#f2c75c"/>
+<circle cx="18" cy="19" r="1.5" fill="#f2c75c"/>
+</svg>
 
 </button>
 
