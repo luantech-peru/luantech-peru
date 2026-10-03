@@ -219,13 +219,39 @@
       text-decoration:none;
     }
     .btn-gold{
-      background:linear-gradient(135deg,var(--gold2),var(--gold));
-      color:#111;
-    }
-    .btn-wa{
-      background:var(--green);
-      color:white;
-    }
+    background:linear-gradient(135deg,#ffe69a,#f2c75c);
+    color:#111;
+    box-shadow:
+        0 0 18px rgba(242,199,92,.45),
+        0 10px 30px rgba(242,199,92,.25);
+    transition:.3s ease;
+}
+
+.btn-wa{
+    background:linear-gradient(135deg,#39e878,#25D366);
+    color:white;
+    box-shadow:
+        0 0 18px rgba(37,211,102,.45),
+        0 10px 30px rgba(37,211,102,.25);
+    transition:.3s ease;
+}
+
+.btn-gold:hover,
+.btn-wa:hover{
+    transform:translateY(-4px);
+}
+
+.btn-gold:hover{
+    box-shadow:
+        0 0 30px rgba(242,199,92,.75),
+        0 15px 40px rgba(242,199,92,.35);
+}
+
+.btn-wa:hover{
+    box-shadow:
+        0 0 30px rgba(37,211,102,.75),
+        0 15px 40px rgba(37,211,102,.35);
+}
     .trust-row{
       display:flex;
       flex-wrap:wrap;
