@@ -624,6 +624,34 @@
       object-fit:contain;
       object-position:left center;
     }
+    .social-icons{
+    display:flex;
+    gap:12px;
+    margin-top:18px;
+}
+
+.social-icons a{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    border:1px solid #203447;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#09121a;
+    transition:.3s;
+}
+
+.social-icons svg{
+    width:20px;
+    height:20px;
+    fill:white;
+}
+
+.social-icons a:hover{
+    transform:translateY(-3px);
+    border-color:#f2c75c;
+}
     .footer-title{font-weight:900;margin-bottom:12px}
     .footer-list{
       list-style:none;
@@ -949,6 +977,27 @@
       <div class="footer-brand">
         <img src="assets/logo.png" alt="LuanTech">
         <p class="muted">Tecnología y accesorios para mantenerte conectado.</p>
+        <div class="social-icons">
+
+<a href="#" aria-label="Facebook">
+    <svg viewBox="0 0 24 24">
+        <path d="M14 8h3V4h-3c-3.3 0-5 1.7-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9c0-.7.3-1 1-1z"/>
+    </svg>
+</a>
+
+<a href="#" aria-label="Instagram">
+    <svg viewBox="0 0 24 24">
+        <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zm6-3a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"/>
+    </svg>
+</a>
+
+<a href="#" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24">
+        <path d="M12 2a10 10 0 0 0-8.7 15l-1.2 4.3 4.4-1.2A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4-1l-.3-.2-2.6.7.7-2.5-.2-.3A8 8 0 1 1 12 20z"/>
+    </svg>
+</a>
+
+</div>
       </div>
 
       <div>
