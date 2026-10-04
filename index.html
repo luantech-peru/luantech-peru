@@ -319,33 +319,50 @@
       margin-top:28px;
     }
     .btn{
-      min-height:48px;
-      padding:0 20px;
+      min-height:52px;
+      padding:0 28px;
       border:0;
-      border-radius:13px;
+      border-radius:16px;
       font-weight:900;
+      font-size:15px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:8px;
+      gap:10px;
       text-decoration:none;
-    }
+      transition:.3s ease;
+}
     .btn-gold{
-    background:linear-gradient(135deg,#ffe69a,#f2c75c);
+    background:linear-gradient(135deg,#fff0b8,#f2c75c);
     color:#111;
     box-shadow:
-        0 0 18px rgba(242,199,92,.45),
-        0 10px 30px rgba(242,199,92,.25);
+        0 0 25px rgba(242,199,92,.55),
+        0 12px 35px rgba(242,199,92,.30);
     transition:.3s ease;
 }
 
+.btn-gold:hover{
+    transform:translateY(-3px);
+    box-shadow:
+        0 0 35px rgba(242,199,92,.75),
+        0 15px 40px rgba(242,199,92,.35);
+}
+
+
 .btn-wa{
-    background:linear-gradient(135deg,#39e878,#25D366);
+    background:linear-gradient(135deg,#4cff8b,#25D366);
     color:white;
     box-shadow:
-        0 0 18px rgba(37,211,102,.45),
-        0 10px 30px rgba(37,211,102,.25);
+        0 0 25px rgba(37,211,102,.55),
+        0 12px 35px rgba(37,211,102,.30);
     transition:.3s ease;
+}
+
+.btn-wa:hover{
+    transform:translateY(-3px);
+    box-shadow:
+        0 0 35px rgba(37,211,102,.75),
+        0 15px 40px rgba(37,211,102,.35);
 }
 
 .btn-gold:hover,
@@ -1018,8 +1035,8 @@ stroke-linejoin="round"/>
 
             <div class="hero-actions">
                 <a class="btn btn-gold" href="#productos">
-                    Ver productos →
-                </a>
+    🛒 Explorar productos →
+</a>
 
                 <a class="btn btn-wa" target="_blank" rel="noopener"
                 href="https://wa.me/51946392083?text=Hola%20LuanTech,%20quisiera%20información%20sobre%20sus%20productos.">
