@@ -129,6 +129,23 @@
     align-items:center;
     gap:14px;
 }
+    .menu-header{
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
+
+.menu-header a{
+    text-decoration:none;
+    color:#d2dce4;
+    font-size:14px;
+    font-weight:500;
+    white-space:nowrap;
+}
+
+.menu-header a:hover{
+    color:var(--gold);
+}
     .social-icon{
     width:28px;
     height:28px;
@@ -970,6 +987,14 @@
 
     <div class="header-actions">
 
+      <nav class="menu-header">
+    <a href="#inicio">Inicio</a>
+    <a href="#productos">Productos</a>
+    <a href="#categorias">Categorías</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#contacto">Contacto</a>
+</nav>
+      
     <a class="social-icon facebook" href="https://www.facebook.com/LuanTech.pe/" target="_blank">
     <img src="assets/facebook.png" alt="Facebook">
 </a>
