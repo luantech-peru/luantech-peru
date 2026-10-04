@@ -264,18 +264,20 @@
     .hero{
     position:relative;
     overflow:hidden;
-    min-height:520px;
+    min-height:560px;
     border-bottom:1px solid rgba(255,255,255,.06);
 }
     .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(120deg,rgba(242,199,92,.10),transparent 30%),
-        linear-gradient(300deg,rgba(0,163,255,.16),transparent 38%);
-      pointer-events:none;
-    }
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        90deg,
+        rgba(0,0,0,.85),
+        rgba(0,0,0,.25)
+    );
+    z-index:1;
+}
     .hero-grid{
       position:relative;
       z-index:2;
@@ -995,35 +997,45 @@ stroke-linejoin="round"/>
 
 <main>
   <section class="hero" id="inicio">
-    <div class="container hero-grid">
-      <div>
-        <span class="eyebrow">⚡ TU TIENDA ONLINE DE TECNOLOGÍA</span>
-        <h1>TECNOLOGÍA<br><span>QUE TE CONECTA</span></h1>
-        <p class="hero-copy">
-          Descubre audífonos, parlantes, accesorios y más.
-Calidad, innovación y tecnología para conectarte mejor.
-        </p>
 
-        <div class="hero-actions">
-          <a class="btn btn-gold" href="#productos">Ver productos →</a>
-          <a class="btn btn-wa" target="_blank" rel="noopener"
-             href="https://wa.me/51946392083?text=Hola%20LuanTech,%20quisiera%20información%20sobre%20sus%20productos.">
-            💬 Comprar por WhatsApp
-          </a>
-        </div>
-
-        <div class="trust-row">
-          <span>Compra coordinada</span>
-          <span>Atención personalizada</span>
-          <span>Yape / Plin / transferencia</span>
-        </div>
-      </div>
-
-      <div class="hero-banner">
-    <img src="assets/banner.png" alt="LuanTech tecnología">
-</div>
+    <div class="hero-banner">
+        <img src="assets/banner.png" alt="LuanTech tecnología">
     </div>
-  </section>
+
+    <div class="container hero-grid">
+
+        <div>
+            <span class="eyebrow">⚡ TU TIENDA ONLINE DE TECNOLOGÍA</span>
+
+            <h1>TECNOLOGÍA<br><span>QUE TE CONECTA</span></h1>
+
+            <p class="hero-copy">
+                Descubre audífonos, parlantes, accesorios y más.
+                Calidad, innovación y tecnología para conectarte mejor.
+            </p>
+
+            <div class="hero-actions">
+                <a class="btn btn-gold" href="#productos">
+                    Ver productos →
+                </a>
+
+                <a class="btn btn-wa" target="_blank" rel="noopener"
+                href="https://wa.me/51946392083?text=Hola%20LuanTech,%20quisiera%20información%20sobre%20sus%20productos.">
+                    💬 Comprar por WhatsApp
+                </a>
+            </div>
+
+            <div class="trust-row">
+                <span>Compra coordinada</span>
+                <span>Atención personalizada</span>
+                <span>Yape / Plin / transferencia</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
   <section id="categorias">
     <div class="container">
