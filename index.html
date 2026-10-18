@@ -953,46 +953,51 @@
       .footer-grid{grid-template-columns:1fr}
     }
     /* AJUSTES RESPONSIVE DEL HERO */
-@media (max-width: 650px) {
+@media (max-width: 900px) {
 
     .hero {
-        position: relative;
-        overflow: hidden;
-        min-height: auto;
-    }
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-width: 0;
+}
 
     .hero-banner {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        padding: 0;
-        overflow: hidden;
-    }
+    position: relative;
+    order: 2;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    min-width: 0;
+    padding: 0;
+    overflow: hidden;
+}
 
     .hero-banner img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: 65% center;
-        opacity: 0.38;
-    }
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    object-fit: contain;
+    object-position: center;
+}
 
     .hero-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr);
-        gap: 0;
-        width: 100%;
-        min-width: 0;
-        min-height: auto;
-        box-sizing: border-box;
-        padding: 36px 18px;
-    }
+    order: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    min-width: 0;
+    min-height: auto;
+    padding: 32px 18px;
+    box-sizing: border-box;
+}
 
     .hero-grid > div {
-        width: 100%;
-        min-width: 0;
-    }
+    min-width: 0;
+    width: 100%;
+}
 
     .hero h1 {
         font-size: clamp(32px, 8.5vw, 46px);
